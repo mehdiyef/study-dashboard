@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en" class="scrollbar-none">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <title>studyd</title>
+</head>
+
+<body class="box-border p-0 bg-[hsl(227,75%,5%)] text-gray-300 overflow-x-hidden">
+  <header class="flex flex-col">
+    <div
+      class="flex justify-between bg-[hsl(227,75%,10%)] px-[5%] py-4 fixed top-0 md:w-[calc(100%-232px)] z-50 items-center w-full md:ml-57">
+      <div class="side-bar-btn text-gray-300 text-xl cursor-pointer md:hidden">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+
+      <div class="text-gray-200 text-3xl w-max cursor-pointer">
+        <i class="toogle scale-x-120 transition-transform duration-300 ease-in fa-solid fa-toggle-off"></i>
+      </div>
+      <div class="add-topics-btn w-7 h-7 border-2 rounded-full flex justify-center cursor-pointer items-center relative">
+        <i class="fa-solid fa-plus"></i>
+        <div class="add-topics transition-transform duration-300 ease-in delay-100 absolute w-max -bottom-6 -right-5 md:-right-7 text-gray-400 scale-x-0 text-sm">
+          <p>add topics</p> 
+        </div>
+      </div>
+
+      <div class="add-topics-form mt-10 absolute top-5 -right-full transition-all duration-300 ease-in-out z-120">
+        <form action="" class="opacity-95 border-gray-800 border p-5 rounded-lg text-gray-200 bg-[hsl(227,75%,5%)] ">
+          <div>
+            <h1 class="text-lg font-bold text-center">Add study task</h1>
+            <div>
+              <i></i>
+            </div>
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="title">Title:</label>
+            <input class="title-input w-full border border-gray-800 px-5 py-2 outline-0 rounded-sm" type="text" id="title"
+              placeholder="eg. DOM manipulation ">
+          </div>
+          <div class="flex justify-between">
+            <div class="flex flex-col gap-1">
+              <label for="catagory">Catagory:</label>
+              <select name="catagory" id="catagory" class="border border-gray-800 px-3 py-2 outline-0 rounded-sm">
+                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">HTML</option>
+                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">Css</option>
+                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">Tailwind</option>
+                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">javascript</option>
+                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">backend</option>
+                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">react</option>
+                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">git</option>
+              </select>
+            </div>
+            <div class="flex flex-col gap-1">
+              <label for="difficulty">difficulty</label>
+              <select class="border border-gray-800 px-3 py-2 outline-0 rounded-sm" name="" id="difficulty">
+  
+                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">1</option>
+                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">2</option>
+                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">3</option>
+                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">4</option>
+                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">5</option>
+              </select>
+            </div>
+          </div>
+          <div class="mt-2 flex flex-col gap-1">
+            <label for="discription">Description</label>
+            <textarea
+              class="w-full max-h-35 border border-gray-800 px-3 py-2 outline-0 rounded-sm overflow-scroll scrollbar-none"
+              name="" id="discription" placeholder="short discription of the text..."></textarea>
+          </div>
+          <button id="add-topics-to"
+            class="w-full bg-blue-950 p-2 rounded-sm mt-3 cursor-pointer hover:scale-105 transition-all duration-300 ease-in hover:bg-blue-900  capitalize">add
+            task</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="mt-20 text-center text-gray-300 pb-2 mx-[5%] md:ml-65">
+
+      <h1
+        class="text-3xl capitalize font-bold bg-linear-90 via-indigo-900 from-blue-800 to-purple-900 text-transparent bg-clip-text text-center">
+        study dashboard</h1>
+      <p>track your learning, stay consistence and achive mastery</p>
+
+    </div>
+  </header>
+
+
+
+  <main class="mx-[5%] md:ml-65">
+    <section class="mt-4 ">
+      <div class="flex justify-between gap-4 flex-wrap">
+        <div class="border border-gray-800 max-w-150 rounded-lg relative">
+          <input class="bg-[hsl(227,75%,7%)] w-full h-full px-3 py-2 rounded-lg outline-0 text-gray-400" type="text"
+            placeholder="🔍  search your topicx...">
+        </div>
+        <div class="max-w-70 border border-gray-800 text-gray-400 bg-[hsl(227,75%,7%)]">
+          <select name="catagory" id="catagory" class="w-full px-2 py-1 h-full rounded-lg outline-0">
+            <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">all catagories</option>
+            <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">HTML</option>
+            <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">Css</option>
+            <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">Tailwind</option>
+            <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">javascript</option>
+            <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">backend</option>
+            <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">react</option>
+            <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">git</option>
+          </select>
+        </div>
+        <div class="border border-gray-800 text-gray-400 flex items-center px-2 bg-[hsl(227,75%,7%)]">
+          <p>sort by:</p>
+          <div class="relative ">
+            <select name="catagory" id="catagory" class="w-full px-2 py-1 outline-0 ">
+              <option value="">difficulty</option>
+              <option value="">time</option>
+              <option value="">completion</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="mt-5 flex flex-wrap gap-5 mx">
+      <div class="flex w-max border border-gray-800 rounded-lg p-4 items-center gap-5 text-gray-400">
+        <div class="w-10 h-10 flex justify-center items-center rounded-full bg-indigo-950">
+          <i class="fa-solid fa-book"></i>
+        </div>
+        <div class="flex flex-col">
+          <p>total topics</p>
+          <h4 class="total-topic text-gray-200 text-2xl font-bold">15</h4>
+          <p class="text-green-600">+4 this weak</p>
+        </div>
+      </div>
+      <div class="flex w-max border border-gray-800 rounded-lg p-4 items-center gap-5 text-gray-400">
+        <div class="w-10 h-10 flex justify-center items-center rounded-full bg-green-700">
+          <i class="fa-solid fa-circle"></i>
+        </div>
+        <div class="flex flex-col">
+          <p>completion</p>
+          <h4 class="text-gray-200 text-2xl font-bold">15</h4>
+          <p class="text-green-600">+2 this weak</p>
+        </div>
+      </div>
+      <div class="flex w-max border border-gray-800 rounded-lg p-4 items-center gap-5 text-gray-400">
+        <div class="w-10 h-10 flex justify-center items-center rounded-full bg-blue-700">
+          <i class="fa-solid fa-clock"></i>
+        </div>
+        <div class="flex flex-col">
+          <p>completion</p>
+          <h4 class="text-gray-200 text-2xl font-bold">47%</h4>
+
+        </div>
+      </div>
+      <div class="flex w-max border border-gray-800 rounded-lg p-4 items-center gap-5 text-gray-400">
+        <div class="w-10 h-10 flex justify-center items-center rounded-full bg-orange-700">
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <div class="flex flex-col">
+          <p>average difficulty</p>
+          <h4 class="text-gray-200 text-2xl font-bold">3/5</h4>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-5 border p-5 rounded-xl border-[hsl(180,100%,7%)] bg-[hsl(180,100%,2%)] flex flex-col m">
+      <div class="flex gap-4 items-center text-gray-400 mb-3 ">
+        <div
+          class="border w-8 h-8 rounded-full flex items-center justify-center bg-[hsl(180,100%,10%)] border-gray-700 text-gray-400">
+          <i class="fa-solid fa-users-gear"></i>
+        </div>
+        <h4 class="text-xl font-bold">study tips</h4>
+      </div>
+      <div class="capitalize text-sm text-gray-400">
+        <div class="tip-container"></div>
+        <p class="text-right text-[hsl(180,100%,28%)]">keep going 🚀</p>
+      </div>
+    </section>
+    <h3 class="col-span-full text-2xl text-gray-300 font-bold mt-7">study topics</h3>
+
+    <section class="topic-card-container grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-4 mt-5">
+
+      <div class="border bg-[hsl(227,75%,6%)] border-gray-600  max-w-full rounded-xl text-gray-300">
+        <div class="p-5 gap-2 flex flex-col capitalize">
+          <div class="border border-yellow-900 bg-yellow-950 w-max rounded-sm py-1 px-3 capitalize">
+            <p class="text-yellow-600">javascript</p>
+          </div>
+          <h2 class="text-2xl font-bold">array methods</h2>
+          <p class="text-gray-400">learn map, filter, reduce and other array methods.</p>
+          <div class="flex justify-between text-[12px]">
+            <p>difficulty: <span>3</span></p>
+            <p class=" "><span>45</span> min</p>
+          </div>
+        </div>
+        <div class="mark-as border-t border-t-gray-500 p-5 flex justify-between items-center">
+          <div class="flex gap-2 capitalize items-center">
+            <div class="text-2xl">
+              <i class="icon-mark fa-regular fa-circle"></i>
+            </div>
+            <p>mark completed</p>
+          </div>
+          <div>
+            <i class="text-red-800 cursor-pointer fa-solid fa-trash-can"></i>
+          </div>
+        </div>
+      </div>
+      <div class="border bg-[hsl(227,75%,6%)] border-gray-600  max-w-full rounded-xl text-gray-300">
+        <div class="p-5 gap-2 flex flex-col capitalize">
+          <div class="border border-sky-800 bg-sky-950 w-max rounded-sm py-1 px-3 capitalize">
+            <p class="text-sky-600">HTML</p>
+          </div>
+          <h2 class="text-2xl font-bold">semantic html</h2>
+          <p class="text-gray-400">write cleaner semantic html for better structure.</p>
+          <div class="flex justify-between text-[12px]">
+            <p>difficulty: <span>2</span></p>
+            <p class=" "><span>25</span> min</p>
+          </div>
+        </div>
+        <div class="mark-as border-t border-t-gray-500 p-5 flex justify-between items-center">
+          <div class="flex gap-2 capitalize items-center t">
+            <div class="text-2xl">
+              <i class="icon-mark fa-regular fa-circle"></i>
+            </div>
+            <p>mark completed</p>
+          </div>
+          <div>
+            <i class="text-red-800 cursor-pointer fa-solid fa-trash-can"></i>
+          </div>
+        </div>
+      </div>
+      <div class="border bg-[hsl(227,75%,6%)] border-gray-600  max-w-full rounded-xl text-gray-300">
+        <div class="p-5 gap-2 flex flex-col capitalize">
+          <div class="border border-purple-800 bg-purple-950 w-max rounded-sm py-1 px-3 capitalize">
+            <p class="text-purple-600">css</p>
+          </div>
+          <h2 class="text-2xl font-bold">flex box layout</h2>
+          <p class="text-gray-400">master flex box for modern one diamensional layout.</p>
+          <div class="flex justify-between text-[12px]">
+            <p>difficulty: <span>4</span></p>
+            <p class=" "><span>30</span> min</p>
+          </div>
+        </div>
+        <div class="mark-as border-t border-t-gray-500 p-5 flex justify-between items-center">
+          <div class="flex gap-2 capitalize items-center">
+            <div class="text-2xl">
+              <i class="icon-mark fa-regular fa-circle"></i>
+            </div>
+            <p>mark completed</p>
+          </div>
+          <div>
+            <i class="text-red-800 cursor-pointer fa-solid fa-trash-can"></i>
+          </div>
+        </div>
+      </div>
+      <div class="border bg-[hsl(227,75%,6%)] border-gray-600  max-w-full rounded-xl text-gray-300">
+        <div class="p-5 gap-2 flex flex-col capitalize">
+          <div class="border border-orange-800 bg-orange-950 w-max rounded-sm py-1 px-3 capitalize">
+            <p>javascript</p>
+          </div>
+          <h2 class="text-2xl font-bold">array methods</h2>
+          <p class="text-gray-400">learn map, filter, reduce and other array methods.</p>
+          <div class="flex justify-between text-[12px]">
+            <p>difficulty: <span>3</span></p>
+            <p class=" "><span>45</span> min</p>
+          </div>
+        </div>
+        <div class="mark-as border-t border-t-gray-500 p-5 flex justify-between items-center">
+          <div class="flex gap-2 capitalize items-center">
+            <div class="text-2xl">
+              <i class="icon-mark fa-regular fa-circle"></i>
+            </div>
+            <p>mark completed</p>
+          </div>
+          <div>
+            <i class="text-red-800 cursor-pointer fa-solid fa-trash-can"></i>
+          </div>
+        </div>
+      </div>
+      <div class="border bg-[hsl(227,75%,6%)] border-gray-600  max-w-full rounded-xl text-gray-300">
+        <div class="p-5 gap-2 flex flex-col capitalize">
+          <div class="border border-orange-800 bg-orange-950 w-max rounded-sm py-1 px-3 capitalize">
+            <p>javascript</p>
+          </div>
+          <h2 class="text-2xl font-bold">array methods</h2>
+          <p class="text-gray-400">learn map, filter, reduce and other array methods.</p>
+          <div class="flex justify-between text-[12px]">
+            <p>difficulty: <span>3</span></p>
+            <p class=" "><span>45</span> min</p>
+          </div>
+        </div>
+        <div class="mark-as border-t border-t-gray-500 p-5 flex justify-between items-center">
+          <div class="flex gap-2 capitalize items-center">
+            <div class="text-2xl">
+              <i class="icon-mark fa-regular fa-circle"></i>
+            </div>
+            <p>mark completed</p>
+          </div>
+          <div>
+            <i class="text-red-800 cursor-pointer fa-solid fa-trash-can"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <div class="col-span-full text-center mb-10 mt-5">
+      <button class="bg-blue-950 px-4 py-2 rounded-sm cursor-pointer text-gray-400">load more topics...</button>
+    </div>
+
+  </main>
+
+  <aside
+    class="side-bar bg-[hsl(227,75%,8%)] border-r border-r-gray-700 w-max p-3 h-lvh flex flex-col justify-between lg:fixed top-0 fixed -left-full md:left-0 z-100 transition-all duration-300">
+    <section>
+      <section class="flex border-b border-b-white gap-2 pb-2 mt-5 flex-col">
+        <div
+          class="side-bar-remover border-2 w-7 h-7 rounded-full flex justify-center cursor-pointer items-center md:hidden">
+          <i class="fa-solid fa-xmark"></i>
+        </div>
+        <div class="flex gap-3">
+
+          <div
+            class="bg-linear-30 bg-blue-950 shadow-blue-600 w-max shadow-sm to-blue-600 border border-blue-950 p-2 text-blue-950 rounded-md">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-book-open-icon lucide-book-open">
+              <path d="M12 5v16" />
+              <path
+                d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" />
+            </svg>
+          </div>
+          <div class="text-gray-300 text-xl capitalize font-bold">
+            <h1>study dashboard</h1>
+          </div>
+        </div>
+      </section>
+      <section class="mt-4 flex flex-col gap-2">
+        <a href="#"
+          class="flex text-gray-300 capitalize gap-3 px-2 py-1 border-blue-950 border-b hover:bg-linear-160 hover:to-blue-900 rounded-sm hover:from-blue-950 font-bold transition-colors duration-300 hover:border hover:border-gray-400  focus:shadow focus:border focus:border-gray-400">
+          <div>
+            <i data-lucide="house"></i>
+          </div>
+          <h2>dashboard</h2>
+        </a>
+        <a href="#"
+          class="flex text-gray-300 capitalize gap-3 px-2 py-1 border-blue-950 border-b hover:bg-linear-160 hover:to-blue-900 rounded-sm hover:from-blue-950 font-bold transition-colors duration-300 hover:shadow hover:border hover:border-gray-400 focus:border focus:border-gray-400">
+          <div>
+
+            <i data-lucide="layout-grid"></i>
+
+          </div>
+          <h2>topics</h2>
+        </a>
+        <a href="#"
+          class="flex text-gray-300 capitalize gap-3 px-2 py-1 border-blue-950 border-b hover:bg-linear-160 hover:to-blue-900 rounded-sm hover:from-blue-950 font-bold transition-colors duration-300 hover:shadow hover:border hover:border-gray-400 focus:shadow focus:border focus:border-gray-400">
+          <div>
+            <i data-lucide="chart-area"></i>
+
+
+          </div>
+          <h2>statistics</h2>
+        </a>
+        <a href="#"
+          class="flex text-gray-300 capitalize gap-3 px-2 py-1 border-blue-950 border-b hover:bg-linear-160 hover:to-blue-900 rounded-sm hover:from-blue-950 font-bold transition-colors duration-300 hover:shadow hover:border hover:border-gray-400 focus:shadow focus:border focus:border-gray-400">
+          <div>
+            <i data-lucide="calendar"></i>
+
+          </div>
+          <h2>calander</h2>
+        </a>
+        <a href="#"
+          class="flex text-gray-300 capitalize gap-3 px-2 py-1 border-blue-950 border-b hover:bg-linear-160 hover:to-blue-900 rounded-sm hover:from-blue-950 font-bold transition-colors duration-300 hover:shadow hover:border hover:border-gray-400 focus:border focus:border-gray-400">
+          <div>
+            <i data-lucide="notebook-pen"></i>
+
+          </div>
+          <h2>notes</h2>
+        </a>
+        <a href="#"
+          class="flex text-gray-300 capitalize gap-3 px-2 py-1 border-blue-950 border-b hover:bg-linear-160 hover:to-blue-900 rounded-sm hover:from-blue-950 font-bold transition-colors duration-300 hover:shadow hover:border hover:border-gray-400 focus:border focus:border-gray-400">
+          <div>
+            <i data-lucide="settings"></i>
+
+          </div>
+          <h2>settings</h2>
+        </a>
+      </section>
+
+    </section>
+
+    <section class="border rounded-xl border-gray-600 text-white p-3">
+      <div class="flex gap-4 items-center">
+        <div
+          class="cursor-pointer border p-1.5 w-8 h-8 rounded-full flex justify-center items-center text-blue-400 text-xl">
+          <i class="fa-solid fa-user"></i>
+        </div>
+        <div class="flex flex-col gap-0.5">
+          <h2 class="text-2xl capitalize m-0 p-0">hi, tehdi 👋</h2>
+          <p class="m-0 p-0">keep learning 💪</p>
+        </div>
+      </div>
+      <div>
+        <div class="capitalize flex justify-between">
+          <h4>your progress</h4>
+          <p>12%</p>
+        </div>
+        <div class="w-full h-3 bg-gray-100 rounded-full mt-3">
+          <div class="w-[50%] h-full bg-linear-0 from-blue-700 via-gray-200 to-blue-700 rounded-full border">
+
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </aside>
+
+  <script>
+    lucide.createIcons();
+  </script>
+  <script type="module" src="/src/main.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+
+</html>
