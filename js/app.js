@@ -1,5 +1,6 @@
 import fetchData from "./api.js"
-import render_tip, { render_topics } from "./ui.js"
+import render_tip, { render_topics, render_total_topic, render_completed_topic, render_progrss_bar, render_average_difficulty } from "./ui.js"
+
 
 const side_bar_btn = document.querySelector(".side-bar-btn")
 const side_bar = document.querySelector(".side-bar")
@@ -8,7 +9,11 @@ const add_form_displayer = document.querySelector(".add-topics-btn")
 const add_topic_form = document.querySelector(".add-topics-form")
 const side_bar_remover = document.querySelector(".side-bar-remover")
 const toogle = document.querySelector(".toogle")
+// const load_more = document.querySelector(".load-more")
+const catagory_list = document.querySelector(".catagory-list")
+const sort = document.querySelector(".sort")
 
+const search_input = document.querySelector(".search-input")
 
 const title = document.querySelector(".title-input")
 const catagory = document.getElementById("catagory")
@@ -17,85 +22,243 @@ const discription = document.getElementById("discription")
 const add_topic_button = document.getElementById("add-topics-to")
 
 const mark_as = document.querySelectorAll(".mark-as")
-const mark_icon = document.querySelectorAll(".icon-mark")
+const body = document.querySelector(".body")
+
 
 console.log(mark_as)
 
 let is_form_displayed = false;
 let is_sidebar_displayed = false;
-let is_toogle_on = false;
+let is_toogle_on = true;
 
 const datas = await fetchData()
-
-const topics = JSON.parse(localStorage.getItem("topics")) || datas[0]
+let topics = JSON.parse(localStorage.getItem("topics")) || datas[0]
 const tip = datas[1]
+
+// function more_loader() {
+
+//   let initial_displayeda_topic = 8;
+//   const topics = [...datas[0]]
+//   topics = topics.slice(0, initial_displayeda_topic)
+//   load_more.addEventListener("click", () => {
+//     initial_displayeda_topic += 4
+//     render_topics(topics.splice(0, initial_displayeda_topic))
+//     console.log(topics)
+//     more_loader()
+//   })
+// }
+
 console.log(topics)
 console.log(tip)
 
-render_tip(tip.tip)
+render_tip(tip)
 render_topics(topics);
-addMarkListeners();
+// more_loader()
+render_average_difficulty(topics)
 
-
-add_topic_button.addEventListener("click", (e) => {
-  e.preventDefault()
-  topics.push({
-    id: crypto.randomUUID(),
-    title: title.value,
-    catagory: catagory.value,
-    color: get_color(catagory.value),
-    difficulty: difficulty.value,
-    duration: Number(difficulty.value) * 10,
-    completed: false,
-    description: discription.value
+function completed_topics() {
+  const completed_topics = topics.filter(topic => {
+    return topic.completed === true
   })
+  render_completed_topic(completed_topics)
+  render_progrss_bar(topics, completed_topics)
+  return completed_topics
+}
 
-  render_topics(topics)
-  addMarkListeners()
-  console.log(topics)
+sort.addEventListener("input", () => {
+
+  let sorted_topic = []
+  if (sort.value === "difficulty") {
+
+    sorted_topic = [...topics].sort((a, b) => a.difficulty - b.difficulty)
+    console.log(sorted_topic)
+    render_topics(sorted_topic)
+    addMarkListeners();
+    delete_topics();
+
+  }
+
+  else if (sort.value === "time") {
+    sorted_topic = [...topics].sort((a, b) => a.duration - b.duration)
+    console.log(sorted_topic)
+    render_topics(sorted_topic)
+    addMarkListeners();
+    delete_topics();
+  }
+
+  else {
+    render_topics(topics)
+  }
 
 })
 
-function get_color(category) {
-  if (category === "JavaScript") {
-    return "yellow";
+// display topics by catagory
+
+catagory_list.addEventListener("input", () => {
+  if (catagory_list.value === "all catagories") {
+
+    render_topics(topics)
+    addMarkListeners();
+    delete_topics();
+
+  }
+  else {
+    render_topics(topics.filter(topic => {
+      return topic.category.toLowerCase() === catagory_list.value.toLowerCase()
+    }))
+    addMarkListeners();
+    delete_topics();
+  }
+})
+
+// search bar event handler
+
+search_input.addEventListener("input", () => {
+  const search_val = search_input.value.toLowerCase()
+  console.log(search_val)
+
+  const topic_searched = topics.filter(topic => {
+    return topic.title.toLowerCase().includes(search_val)
+  })
+
+  console.log(topic_searched)
+  // const to_be_search = topics.filter(topic => topic.title.includes(title.value))
+  // console.log(to_be_search)
+
+  render_topics(topic_searched)
+  addMarkListeners();
+  delete_topics();
+})
+
+
+// add topics btn event controler
+
+add_topic_button.addEventListener("click", (e) => {
+
+  e.preventDefault();
+
+  if (title.value && discription.value) {
+    topics.push({
+      id: crypto.randomUUID(),
+      title: title.value,
+      category: catagory.value,
+      difficulty: Number(difficulty.value),
+      duration: Number(difficulty.value) * 10,
+      completed: false,
+      description: discription.value
+    })
+    add_topic_form.classList.add("-right-full")
+    add_topic_form.classList.remove("right-5")
+    is_form_displayed = false
+
+    render_topics(topics);
+    render_average_difficulty(topics)
+    addMarkListeners();
+    render_total_topic(topics);
+    localStorage.setItem("topics", JSON.stringify(topics))
   }
 
-  if (category === "React") {
-    return "blue";
-  }
+  title.value = "";
+  discription.value = "";
+  const completed = completed_topics()
+  console.log(completed)
+  render_progrss_bar(topics, completed)
+  delete_topics()
+})
 
-  if (category === "CSS") {
-    return "purple";
-  }
-
-  if (category === "HTML") {
-    return "orange";
-  }
-
-  return "gray";
-}
 // MARK AS COMPLET EVENT HANDLER
 function addMarkListeners() {
   document.querySelectorAll(".icon-mark").forEach(icon => {
     icon.addEventListener("click", () => {
       mark_complete(icon.dataset.id);
+      localStorage.setItem("topics", JSON.stringify(topics))
     });
   });
 }
 
+
+function mark_complete(id) {
+
+  const to_be_complet = topics.find(
+    topic => topic.id === id
+
+  );
+  console.log(to_be_complet)
+
+  if (!to_be_complet.completed) {
+    to_be_complet.completed = true
+    render_topics(topics);
+    addMarkListeners();
+    delete_topics()
+    completed_topics()
+    localStorage.setItem("topics", JSON.stringify(topics))
+  }
+
+  else {
+    to_be_complet.completed = false
+    render_topics(topics);
+    addMarkListeners();
+    completed_topics()
+    delete_topics()
+    localStorage.setItem("topics", JSON.stringify(topics))
+  }
+
+  console.log(to_be_complet);
+}
+
+// delete topics event handler
+
+function delete_topics() {
+  document.querySelectorAll(".delete-topic").forEach((icon) => {
+    icon.addEventListener("click", () => {
+      delete_topics_fun(icon.dataset.id)
+      render_total_topic(topics)
+      const completed = completed_topics()
+      render_progrss_bar(topics, completed)
+      localStorage.setItem("topics", JSON.stringify(topics))
+    })
+  })
+}
+
+function delete_topics_fun(id) {
+
+  const to_be_deleted = topics.find(
+    topic => topic.id == id
+  );
+
+  topics.splice(topics.indexOf(to_be_deleted), 1)
+  render_topics(topics)
+  delete_topics()
+  addMarkListeners()
+
+  if (to_be_deleted.completed === true) {
+    completed_topics(topics)
+  }
+
+
+
+  console.log(topics)
+
+}
+
+
 // TOOGLE EVENT HANDLER
 
 toogle.addEventListener("click", () => {
-  if (!is_toogle_on) {
-    toogle.classList.remove("fa-toggle-off")
-    toogle.classList.add("fa-toggle-on")
-    is_toogle_on = true
-  }
-  else {
+  if (is_toogle_on) {
+
     toogle.classList.add("fa-toggle-off")
     toogle.classList.remove("fa-toggle-on")
+
+    document.documentElement.classList.toggle("dark");
+
     is_toogle_on = false
+  }
+  else {
+    toogle.classList.remove("fa-toggle-off")
+    toogle.classList.add("fa-toggle-on")
+    document.documentElement.classList.toggle("dark");
+    is_toogle_on = true
   }
 })
 
@@ -148,27 +311,9 @@ side_bar_remover.addEventListener("click", () => {
   }
 })
 
-function mark_complete(id) {
-  const to_be_complet = topics.find(
-    topic => topic.id === Number(id)
-  );
 
-  if (!to_be_complet.completed) {
-    to_be_complet.completed = true
-    render_topics(topics);
-    addMarkListeners();
-    localStorage.setItem("topics", JSON.stringify(topics))
-  }
-
-  else {
-    to_be_complet.completed = false
-    render_topics(topics);
-    addMarkListeners();
-    localStorage.setItem("topics", JSON.stringify(topics))
-  }
-
-
-
-  console.log(to_be_complet);
-}
+completed_topics()
+addMarkListeners();
+delete_topics()
+render_total_topic(topics)
 

@@ -10,7 +10,8 @@
   <title>studyd</title>
 </head>
 
-<body class="box-border p-0 bg-[hsl(227,75%,5%)] text-gray-300 overflow-x-hidden">
+<body
+  class="body box-border p-0 bg-[hsl(227,75%,5%)] text-gray-300 overflow-x-hidden transition-all duration-200 ease-in">
   <header class="flex flex-col">
     <div
       class="flex justify-between bg-[hsl(227,75%,10%)] px-[5%] py-4 fixed top-0 md:w-[calc(100%-232px)] z-50 items-center w-full md:ml-57">
@@ -19,12 +20,14 @@
       </div>
 
       <div class="text-gray-200 text-3xl w-max cursor-pointer">
-        <i class="toogle scale-x-120 transition-transform duration-300 ease-in fa-solid fa-toggle-off"></i>
+        <i class="toogle scale-x-120 transition-all duration-300 ease-in fa-solid fa-toggle-on"></i>
       </div>
-      <div class="add-topics-btn w-7 h-7 border-2 rounded-full flex justify-center cursor-pointer items-center relative">
+      <div
+        class="add-topics-btn w-7 h-7 border-2 rounded-full flex justify-center cursor-pointer items-center relative">
         <i class="fa-solid fa-plus"></i>
-        <div class="add-topics transition-transform duration-300 ease-in delay-100 absolute w-max -bottom-6 -right-5 md:-right-7 text-gray-400 scale-x-0 text-sm">
-          <p>add topics</p> 
+        <div
+          class="add-topics transition-transform duration-300 ease-in delay-100 absolute w-max -bottom-6 -right-5 md:-right-7 text-gray-400 scale-x-0 text-sm">
+          <p>add topics</p>
         </div>
       </div>
 
@@ -32,37 +35,34 @@
         <form action="" class="opacity-95 border-gray-800 border p-5 rounded-lg text-gray-200 bg-[hsl(227,75%,5%)] ">
           <div>
             <h1 class="text-lg font-bold text-center">Add study task</h1>
-            <div>
-              <i></i>
-            </div>
           </div>
           <div class="flex flex-col gap-1">
             <label for="title">Title:</label>
-            <input class="title-input w-full border border-gray-800 px-5 py-2 outline-0 rounded-sm" type="text" id="title"
-              placeholder="eg. DOM manipulation ">
+            <input class="title-input w-full border border-gray-800 px-5 py-2 outline-0 rounded-sm" type="text"
+              id="title" placeholder="eg. DOM manipulation" required>
           </div>
           <div class="flex justify-between">
             <div class="flex flex-col gap-1">
               <label for="catagory">Catagory:</label>
               <select name="catagory" id="catagory" class="border border-gray-800 px-3 py-2 outline-0 rounded-sm">
-                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">HTML</option>
-                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">Css</option>
-                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">Tailwind</option>
-                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">javascript</option>
-                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">backend</option>
-                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">react</option>
-                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">git</option>
+                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="HTML">HTML</option>
+                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="Css">Css</option>
+                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="Tailwind">Tailwind</option>
+                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="javascript">javascript</option>
+                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="backend">backend</option>
+                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="react">react</option>
+                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="git">git</option>
               </select>
             </div>
             <div class="flex flex-col gap-1">
               <label for="difficulty">difficulty</label>
               <select class="border border-gray-800 px-3 py-2 outline-0 rounded-sm" name="" id="difficulty">
-  
-                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">1</option>
-                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">2</option>
-                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">3</option>
-                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">4</option>
-                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">5</option>
+
+                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="1">1</option>
+                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="2">2</option>
+                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="3">3</option>
+                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="4">4</option>
+                <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="5">5</option>
               </select>
             </div>
           </div>
@@ -70,7 +70,7 @@
             <label for="discription">Description</label>
             <textarea
               class="w-full max-h-35 border border-gray-800 px-3 py-2 outline-0 rounded-sm overflow-scroll scrollbar-none"
-              name="" id="discription" placeholder="short discription of the text..."></textarea>
+              name="" id="discription" placeholder="short discription of the text..." required></textarea>
           </div>
           <button id="add-topics-to"
             class="w-full bg-blue-950 p-2 rounded-sm mt-3 cursor-pointer hover:scale-105 transition-all duration-300 ease-in hover:bg-blue-900  capitalize">add
@@ -82,7 +82,7 @@
     <div class="mt-20 text-center text-gray-300 pb-2 mx-[5%] md:ml-65">
 
       <h1
-        class="text-3xl capitalize font-bold bg-linear-90 via-indigo-900 from-blue-800 to-purple-900 text-transparent bg-clip-text text-center">
+        class="text-3xl capitalize font-bold bg-linear-90 via-indigo-900 from-blue-600 to-purple-900 text-transparent bg-clip-text text-center">
         study dashboard</h1>
       <p>track your learning, stay consistence and achive mastery</p>
 
@@ -95,28 +95,28 @@
     <section class="mt-4 ">
       <div class="flex justify-between gap-4 flex-wrap">
         <div class="border border-gray-800 max-w-150 rounded-lg relative">
-          <input class="bg-[hsl(227,75%,7%)] w-full h-full px-3 py-2 rounded-lg outline-0 text-gray-400" type="text"
-            placeholder="🔍  search your topicx...">
+          <input class="search-input bg-[hsl(227,75%,7%)] w-full h-full px-3 py-2 rounded-lg outline-0 text-gray-400"
+            type="text" placeholder="🔍  search your topicx...">
         </div>
         <div class="max-w-70 border border-gray-800 text-gray-400 bg-[hsl(227,75%,7%)]">
-          <select name="catagory" id="catagory" class="w-full px-2 py-1 h-full rounded-lg outline-0">
-            <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">all catagories</option>
-            <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">HTML</option>
-            <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">Css</option>
-            <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">Tailwind</option>
-            <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">javascript</option>
-            <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">backend</option>
-            <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">react</option>
-            <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="">git</option>
+          <select name="catagory" id="catagory" class="catagory-list w-full px-2 py-1 h-full rounded-lg outline-0">
+            <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="all catagories">all catagories
+            </option>
+            <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="HTML">HTML</option>
+            <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="Css">Css</option>
+            <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="Tailwind">Tailwind</option>
+            <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="javascript">javascript</option>
+            <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="backend">backend</option>
+            <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="react">react</option>
+            <option class="bg-[hsl(227,75%,5%)] hover:bg-[hsl(227,75%,5%)]" value="git">git</option>
           </select>
         </div>
         <div class="border border-gray-800 text-gray-400 flex items-center px-2 bg-[hsl(227,75%,7%)]">
           <p>sort by:</p>
           <div class="relative ">
-            <select name="catagory" id="catagory" class="w-full px-2 py-1 outline-0 ">
-              <option value="">difficulty</option>
-              <option value="">time</option>
-              <option value="">completion</option>
+            <select name="catagory" id="catagory" class="sort w-full px-2 py-1 outline-0 ">
+              <option value="difficulty">difficulty</option>
+              <option value="time">time</option>
             </select>
           </div>
         </div>
@@ -124,10 +124,10 @@
 
     </section>
 
-    <section class="mt-5 flex flex-wrap gap-5 mx">
-      <div class="flex w-max border border-gray-800 rounded-lg p-4 items-center gap-5 text-gray-400">
+    <section class="info-container mt-5 flex flex-wrap gap-5 mx capitalize">
+      <div class="flex w-max border border-gray-800 rounded-lg p-4 items-center gap-5">
         <div class="w-10 h-10 flex justify-center items-center rounded-full bg-indigo-950">
-          <i class="fa-solid fa-book"></i>
+          <i data-lucide="book-open"></i>
         </div>
         <div class="flex flex-col">
           <p>total topics</p>
@@ -135,33 +135,33 @@
           <p class="text-green-600">+4 this weak</p>
         </div>
       </div>
-      <div class="flex w-max border border-gray-800 rounded-lg p-4 items-center gap-5 text-gray-400">
+      <div class="flex w-max border border-gray-800 rounded-lg p-4 items-center gap-5">
         <div class="w-10 h-10 flex justify-center items-center rounded-full bg-green-700">
-          <i class="fa-solid fa-circle"></i>
+          <i class="fa-solid fa-check"></i>
         </div>
         <div class="flex flex-col">
-          <p>completion</p>
-          <h4 class="text-gray-200 text-2xl font-bold">15</h4>
-          <p class="text-green-600">+2 this weak</p>
+          <p>completed</p>
+          <h4 class="completed text-gray-200 text-2xl font-bold">15</h4>
+          <p class="text-green-600">+4 this weak</p>
         </div>
       </div>
-      <div class="flex w-max border border-gray-800 rounded-lg p-4 items-center gap-5 text-gray-400">
+      <div class="flex w-max border border-gray-800 rounded-lg p-4 items-center gap-5">
         <div class="w-10 h-10 flex justify-center items-center rounded-full bg-blue-700">
           <i class="fa-solid fa-clock"></i>
         </div>
         <div class="flex flex-col">
           <p>completion</p>
-          <h4 class="text-gray-200 text-2xl font-bold">47%</h4>
+          <h4 class="text-gray-200 text-2xl font-bold">% <span class="completion"></span></h4>
 
         </div>
       </div>
-      <div class="flex w-max border border-gray-800 rounded-lg p-4 items-center gap-5 text-gray-400">
+      <div class="flex w-max border border-gray-800 rounded-lg p-4 items-center gap-5">
         <div class="w-10 h-10 flex justify-center items-center rounded-full bg-orange-700">
           <i class="fa-solid fa-star"></i>
         </div>
         <div class="flex flex-col">
           <p>average difficulty</p>
-          <h4 class="text-gray-200 text-2xl font-bold">3/5</h4>
+          <h4 class="text-gray-200 text-2xl font-bold"><span class="average-difficulty"></span>/5</h4>
         </div>
       </div>
     </section>
@@ -169,13 +169,14 @@
     <section class="mt-5 border p-5 rounded-xl border-[hsl(180,100%,7%)] bg-[hsl(180,100%,2%)] flex flex-col m">
       <div class="flex gap-4 items-center text-gray-400 mb-3 ">
         <div
-          class="border w-8 h-8 rounded-full flex items-center justify-center bg-[hsl(180,100%,10%)] border-gray-700 text-gray-400">
-          <i class="fa-solid fa-users-gear"></i>
+          class="border w-8 p-2 h-8 rounded-full flex items-center justify-center bg-[hsl(180,100%,10%)] border-gray-700 text-gray-400">
+
+          <i data-lucide="sparkles"></i>
         </div>
         <h4 class="text-xl font-bold">study tips</h4>
       </div>
       <div class="capitalize text-sm text-gray-400">
-        <div class="tip-container"></div>
+        <div class="tip-container transition-opacity duration-300 from-0% to-100%"></div>
         <p class="text-right text-[hsl(180,100%,28%)]">keep going 🚀</p>
       </div>
     </section>
@@ -255,7 +256,7 @@
           </div>
         </div>
       </div>
-      <div class="border bg-[hsl(227,75%,6%)] border-gray-600  max-w-full rounded-xl text-gray-300">
+      <div class="border bg-[hsl(227,75%,6%)] border-gray-600 max-w-full rounded-xl text-gray-300">
         <div class="p-5 gap-2 flex flex-col capitalize">
           <div class="border border-orange-800 bg-orange-950 w-max rounded-sm py-1 px-3 capitalize">
             <p>javascript</p>
@@ -304,8 +305,8 @@
         </div>
       </div>
     </section>
-    
-    <div class="col-span-full text-center mb-10 mt-5">
+
+    <div class="load-more col-span-full text-center mb-10 mt-5">
       <button class="bg-blue-950 px-4 py-2 rounded-sm cursor-pointer text-gray-400">load more topics...</button>
     </div>
 
@@ -394,7 +395,7 @@
     <section class="border rounded-xl border-gray-600 text-white p-3">
       <div class="flex gap-4 items-center">
         <div
-          class="cursor-pointer border p-1.5 w-8 h-8 rounded-full flex justify-center items-center text-blue-400 text-xl">
+          class="cursor-pointer border-2 p-1.5 w-8 h-8 rounded-full flex justify-center items-center text-blue-400 text-xl">
           <i class="fa-solid fa-user"></i>
         </div>
         <div class="flex flex-col gap-0.5">
@@ -403,12 +404,13 @@
         </div>
       </div>
       <div>
-        <div class="capitalize flex justify-between">
+        <div class="capitalize flex justify-between font-bold">
           <h4>your progress</h4>
-          <p>12%</p>
+          <p class="progress-num">12%</p>
         </div>
-        <div class="w-full h-3 bg-gray-100 rounded-full mt-3">
-          <div class="w-[50%] h-full bg-linear-0 from-blue-700 via-gray-200 to-blue-700 rounded-full border">
+        <div class="progress-container w-full h-3 bg-gray-100 rounded-full mt-2">
+          <div
+            class="progress-bar w-[50%] h-full bg-linear-0 from-blue-700 via-gray-200 to-blue-700 rounded-full border">
 
           </div>
         </div>
