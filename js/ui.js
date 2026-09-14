@@ -25,7 +25,7 @@ export function render_topics(topics) {
     topics.map((topic) => {
       const color = get_color(topic.category);
       topic_HTML.push(`
-  <div class="border shadow-sm shadow-gray-500 bg-[hsl(227,90%,4%)] border-gray-600 max-w-full rounded-xl text-gray-300">
+  <div class="border shadow-sm shadow-gray-500 bg-[hsl(227,90%,4%)] border-gray-600 max-w-full rounded-xl text-gray-300 dark:text-[hsl(227,75%,5%)] dark:bg-transparent">
 
     <div class="p-5 gap-2 flex flex-col capitalize">
 
@@ -35,7 +35,7 @@ export function render_topics(topics) {
 
       <h2 class="text-2xl font-bold">${topic.title}</h2>
 
-      <p class="text-gray-400">${topic.description}</p>
+      <p class="text-gray-400  dark:text-[hsl(227,75%,10%)]">${topic.description}</p>
 
       <div class="flex justify-between text-[12px]">
         <p>difficulty: <span>${topic.difficulty}</span></p>
@@ -199,5 +199,20 @@ export function error_display(err) {
 `
 
 }
+
+// export function render_sidebar() {
+//   let side_bar = `<a href="#"
+//       class="flex capitalize gap-3 px-2 py-1 border-blue-950 border hover:bg-linear-160 hover:to-blue-900 rounded-sm hover:from-blue-950 font-bold transition-colors duration-300 hover:border hover:border-gray-400  focus:shadow focus:border focus:border-gray-400 hover:text-gray-300">
+//       <div>
+//         <i data-lucide="house"></i>
+//       </div>
+//       <h2>dashboard</h2>
+//     </a>`
+//   // side_info.map(info => {
+//   // })
+//   document.querySelector(".side-info-container").appendChild(side_bar)
+// }
+
+// render_sidebar()
 
 export default render_tip
